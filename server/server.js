@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./Database/db.js";
+import taskRoutes from './routes/Tasks.routes.js'
 const app = express();
 
 dotenv.config();
@@ -12,6 +13,8 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("API Running...")
 })
+
+app.use("/api/tasks", taskRoutes);
 
 const PORT = process.env.PORT || 5000
 
