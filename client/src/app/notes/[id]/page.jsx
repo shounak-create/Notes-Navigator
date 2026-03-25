@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react";
@@ -7,8 +8,8 @@ export default function opentask(){
     const [task,setTask] = useState(null)
 
     const fetchtasks = async ()=>{
-        const data = await axios.get(`http${id}`);
-        setTask(data)
+        const data = await axios.get(`/api/tasks/${id}`);
+        setTask(data.data)
     }
     useEffect(()=>{
         fetchtasks()
